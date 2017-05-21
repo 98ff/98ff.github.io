@@ -1,57 +1,235 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>轮播图</title>
-		<link rel="stylesheet" type="text/css" href="css/jquery.xyslide.css"/>
-	</head>
-	<body>
-		<!--第一个轮播图-->
-		<div class="slide xy-slide">
-			<div class="xy-pre">前一张</div>
-			<div class="xy-next">后一张</div>
-			<ul>
-				<li><img src="images/1.jpg" alt="轮播图片" /></li>
-				<li><img src="images/2.jpg" alt="轮播图片" /></li>
-				<li><img src="images/3.jpg" alt="轮播图片" /></li>
-				<li><img src="images/4.jpg" alt="轮播图片" /></li>
-				<li><img src="images/5.jpg" alt="轮播图片" /></li>
-				<li><img src="images/6.jpg" alt="轮播图片" /></li>
-				<li><img src="images/7.jpg" alt="轮播图片" /></li>
-				<!--<li><img src="images/index.png" alt="轮播图片" /></li>-->
-			</ul>
-		</div>
-		<div class="slide xy-slide">
-			<section class="xy-pre">前一张</section>
-			<section class="xy-next">后一张</section>
-			<ul>
-				<li><img src="images/1.jpg" alt="轮播图片" /></li>
-				<li><img src="images/2.jpg" alt="轮播图片" /></li>
-				<li><img src="images/3.jpg" alt="轮播图片" /></li>
-				<li><img src="images/4.jpg" alt="轮播图片" /></li>
-				<li><img src="images/5.jpg" alt="轮播图片" /></li>
-				<li><img src="images/6.jpg" alt="轮播图片" /></li>
-				<li><img src="images/7.jpg" alt="轮播图片" /></li>
-				<!--<li><img src="images/index.png" alt="轮播图片" /></li>-->
-			</ul>
-		</div>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+    <style>
+    html, body {
+        position: relative;
+        height: 100%;
+    }
+    body {
+        background: #000;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: white;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+    img{
+    	width: 100% !important;
+    	height: 100% !important;
+    }
+    .swiper-container {
+        width: 100%;
+        height: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .swiper-slide {
+        background-size: cover;
+        background-position: center;
+    }
+    .gallery-top {
+        height: 100%;
+        width: 100%;
+    }
+    .gallery-thumbs {
+    	position: absolute;
+    	bottom: 0;
+        /*height: 20%;*/
+        box-sizing: border-box;
+        padding: 10px 0;
+    }
+    .gallery-thumbs .swiper-slide {
+    	position: relative;
+        width: calc(100% / 6);
+        height: 100%;
+        background-size: 100% 100% !important;
+        padding: 0 5% !important;
+    }
+    
+    .badge{
+		width: 1rem;
+		height: 1rem;
+		position: absolute;
+		bottom: 0.25rem;
+		right: 0.25rem;
+		z-index: 100;
+		border-radius: 50%;
+		background-color: black;
+	}
+    .gallery-thumbs .swiper-slide-active {
+        opacity: 1;
+    }
+    .swiper-button-white{
+    	/*color: #d7b72e !important;*/
+    }
+    #play{
+		position: absolute;
+		right: 15px;
+		top: 0px;
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 50%;
+		background-image: url(images/icon.png);
+		background-size: 200% 100%;
+		background-position: 2.5rem 0;
+		z-index: 10;
 		
-		<div id="slide" class="xy-slide">
-			<section class="xy-pre">前一张</section>
-			<section class="xy-next">后一张</section>
-			<ul>
-				<li><img src="images/1.jpg" alt="轮播图片" /></li>
-				<li><img src="images/2.jpg" alt="轮播图片" /></li>
-				<li><img src="images/3.jpg" alt="轮播图片" /></li>
-				<li><img src="images/4.jpg" alt="轮播图片" /></li>
-				<li><img src="images/5.jpg" alt="轮播图片" /></li>
-				<li><img src="images/6.jpg" alt="轮播图片" /></li>
-				<li><img src="images/7.jpg" alt="轮播图片" /></li>
-				<!--<li><img src="images/index.png" alt="轮播图片" /></li>-->
-			</ul>
-		</div>
-	</body>
+	}
+    /*#thumbnails{
+    	width: 90%;
+    	height: 20vw;
+    	margin-right: 5%;
+    }*/
+    @media screen and (orientation: portrait) {
+		        html{
+					width : 100% ;
+					height : 100% ;
+					background-color: white ;
+					overflow : hidden;
+		        }
+		        body{
+		          width : 100% ;
+		          height : 100% ;
+		          overflow : hidden;
+		        }
+		        /*.gallery-thumbs{
+		        	width: 90%;
+		        	margin: 0 auto;
+		        	/*height: 20rem;*/
+		        /*}*/
+		  
+			} 
+			@media screen and (orientation: landscape) {
+			      html{
+			         width : 100% ;
+			         height : 100% ;
+			      } 
+			       body{
+			         width : 100% ;
+			         height : 100% ;
+			      }
+			      /*.gallery-thumbs{
+			      	width: 90%;
+			      	margin: 0 auto
+			      	height: 20rem;
+			      }*/
+			}
+			.swiper-button-prev{
+				background-image: url(images/left.png);
+				background-size: 200% 100%;
+				background-position: 0 0;
+			}
+			.swiper-button-next{
+				background-image: url(images/left.png);
+				background-size: 200% 100%;
+				background-position: 100% 0;
+			}
+			/*.swiper-button-pre{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");*/
+    </style>
+</head>
+<body>
+    <!-- Swiper -->
+    <div id="play"></div>
+    <div class="swiper-container gallery-top swiper-container-horizontal" id="content">
+        <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 3ms;">
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev swiper-button-disabled"></div>
+    </div>
+    <!--<div id="thumbnails">-->
+    	
+    
+    <div class="swiper-container gallery-thumbs swiper-container-horizontal" id="thumbs" style="width: calc(100% - 40px);margin:  0 20px;">
+        <div class="swiper-wrapper" style="transform: translate3d(512px, 0px, 0px); transition-duration: 0ms;">
+
+        </div>
+    <!--</div>-->
+	</div>
+    <!-- Swiper JS -->
+    <script src="js/swiper-3.4.2.min.js"></script>
+	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <!-- Initialize Swiper -->
+    <script>
+    init();
+//	初始化li的宽高
+	var thumbsStr = '';
+	var topStr = '';
+	for (var i = 0; i <= 15; i++) {
+		thumbsStr +='<div class="swiper-slide" style="background-image: url(images/thumbs/'+ i + '.jpg); margin-right: 10px;">'
+            	+ '<div class="badge">' + (i+1) + '</div>'
+            + '</div>';
+        if(i==0){
+        	topStr += '<div class="swiper-slide swiper-slide-active" style="background-image: url(images/' + i + '.jpg);background-size: 100% 100%;"></div>';    	
+        }else{
+        	topStr += '<div class="swiper-slide" style="background-image: url(images/'+ i +'.jpg);background-size: 100% 100%;"></div>';
+        }
+        
+        
+	}
+	$('.gallery-top .swiper-wrapper').html(topStr);
+	$('.gallery-thumbs .swiper-wrapper').html(thumbsStr);
+	function init(){
+		var w = document.documentElement.clientWidth / 6;
+		$('.gallery-thumbs').css({
+			height: w / 1.2
+		});
+//		console.log($('.gallery-thumbs .swiper-slide'))
+	}
+	window.onresize = function(){
+		init();
+	}
+	var playFlags = false;
+    var galleryTop = new Swiper('.gallery-top', {
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        spaceBetween: 10,
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        lazyLoading : true,
+        autoplay: 3000,
+        onSlideChangeEnd: function(swiper){
+        	playFlags = true;
+        	$('#play').click();
+        }
+
+    });
+
+    var galleryThumbs = new Swiper('#thumbs', {
+        spaceBetween: 10,
+        centeredSlides: true,
+        paginationClickable: true,
+        slidesPerView: 'auto',
+        touchRatio: 0.2,
+
+    });
+    galleryTop.params.control = galleryThumbs;
+    galleryThumbs.params.control = galleryTop;
+
+////	循环播放
+//	var playFlags = false;
+	$('#play').click(function(){
+		playFlags = !playFlags;
+		
+		if(playFlags){
+			$(this).css('background-position','0 0');
+			galleryThumbs.stopAutoplay();
+			galleryTop.stopAutoplay();
+		}else{
+			galleryTop.startAutoplay();
+			$(this).css('background-position','2.5rem 0');
+			
+		}
+		
+	});
+    </script>
+
+
+</body>
 </html>
-<script src="libs/jquery.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/jquery.xyslide.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
